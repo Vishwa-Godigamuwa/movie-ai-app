@@ -3,7 +3,8 @@ const router = express.Router();
 
 const Movie = require("../models/Movie");
 
-router.get("/seed", async (req, res) =>  {
+// Seed a sample movie
+router.get("/seed", async (req, res) => {
   try {
     const movie = new Movie({
       title: "Inception",
@@ -17,6 +18,19 @@ router.get("/seed", async (req, res) =>  {
     await movie.save();
 
     res.status(201).json(movie);
+  } catch (error) {
+    res.status(500).json({
+      message: error.message
+    });
+  }
+});
+
+// Get all movies
+router.get("/", async (req, res) => {
+  try {
+    const movies = await Movie.find();
+
+    res.status(200).json(movies);
   } catch (error) {
     res.status(500).json({
       message: error.message
