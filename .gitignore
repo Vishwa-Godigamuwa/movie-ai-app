@@ -1,0 +1,18 @@
+# node modules (DO NOT upload dependencies)
+node_modules/
+
+# environment variables (passwords, DB links)
+.env
+
+# logs
+*.log
+
+# build folders
+dist/
+build/
+
+# system files
+.DS_Store
+
+# ML model files
+*.pkl
